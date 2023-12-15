@@ -3,3 +3,10 @@ body {
     margin: 0;
     overflow: hidden;
 }
+h1 {
+    background: pink;
+}
+canvas {
+    border: 1px red dashed;
+}
+
