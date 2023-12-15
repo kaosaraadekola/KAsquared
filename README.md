@@ -29,3 +29,4 @@ Please note we DO NOT use Live Server at all for React development!
 ## See also 
 * [a starter for p5.js with typescript (traditional global mode)](https://github.com/WeAreAcademy/academy-p5js-ts-global-mode-starter)
 * [a starter for p5.js with typescript (instance mode - supports ESModules)](https://github.com/nbogie/p5-ts-starter-23)
+Hello from Kaosara
