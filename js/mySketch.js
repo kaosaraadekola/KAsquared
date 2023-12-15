@@ -2,7 +2,8 @@
 //It must be loaded from index.html
 //It assumes that the file "myPalettes.js" has also been loaded
 
-function mouseClicked() {
+function mouseIsClicked() {
+    snowflakeColor = color(random(255), random(255), random(255));
 }
 
 function keyPressed() {
@@ -19,11 +20,38 @@ function setup() {
 function draw() {
 	snowfall();
 	snowman();
+    pinetree();
+    moon();
+    message();
 }
 
 let snowflakes = [];
 
+function message(){
+    strokeWeight(10);
+    stroke("black");
+    textSize(20);
+    text('Merry Christmas from KAsquared!', 200, 550);
+}
+
+function pinetree() {
+fill("green");
+stroke("brown");
+strokeWeight(5);
+triangle(150,40,80,160,230,160);
+triangle(70,250,150,100,240,240);
+triangle(70,320,150,200,240,340);
+line(150,320,150,430);
+}
+
+function moon() {
+    noStroke();
+    fill("gray");
+    circle(80,80,120);
+}
+
 function snowfall() {
+
   background(img);
 
   if (frameCount % 3 === 0) {
@@ -42,7 +70,8 @@ function snowfall() {
 		flake.y += flake.speedY;
 
     noStroke();
-    fill(255);
+    // fill(snowflakeColor);
+    fill("white");
     circle(flake.x, flake.y, flake.d);
   }
 }
@@ -52,7 +81,8 @@ function snowman() {
 	strokeWeight(3);
 
   //head, torso and base
-	stroke("black")
+	stroke("black");
+    fill("white");
 	circle(400,170,100);
 	circle(400,290,140);
 	circle(400,450,180);
