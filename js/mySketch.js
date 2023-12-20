@@ -2,8 +2,9 @@
 //It must be loaded from index.html
 //It assumes that the file "myPalettes.js" has also been loaded
 
-function mouseIsClicked() {
-    snowflakeColor = color(random(255), random(255), random(255));
+function mousePressed() {
+    //let snowflakeColor = fill(random(255), random(255), random(255));
+    //snowfall();
 }
 
 function keyPressed() {
@@ -70,7 +71,7 @@ function snowfall() {
 		flake.y += flake.speedY;
 
     noStroke();
-    // fill(snowflakeColor);
+    //fill(snowflakeColor);
     fill("white");
     circle(flake.x, flake.y, flake.d);
   }
