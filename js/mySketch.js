@@ -1,11 +1,3 @@
-//This is our main javascript file constituting our p5.js sketch.
-//It must be loaded from index.html
-//It assumes that the file "myPalettes.js" has also been loaded
-
-function mouseIsClicked() {
-    snowflakeColor = color(random(255), random(255), random(255));
-}
-
 function keyPressed() {
     if (key === "s") {
         save("my-p5-screenshot");
@@ -15,65 +7,58 @@ function keyPressed() {
 function setup() {
 	createCanvas(800, 600);
 	background(img);
+	noLoop();
 }
 
 function draw() {
-	snowfall();
 	snowman();
-    pinetree();
     moon();
     message();
+
+	for (let x = 50; x < 300; x = x + 70) {
+		pineTree(x, random(380, 520), random(20, 70), 30);
+	}
 }
 
-let snowflakes = [];
+function mousePressed() {
+	background(img);
+	redraw();
+}
 
 function message(){
-    strokeWeight(10);
-    stroke("black");
-    textSize(20);
-    text('Merry Christmas from KAsquared!', 200, 550);
+	noStroke();
+    textSize(30);
+	fill("black");
+    text('Merry Christmas from KAsquared!', 200, 40);
 }
 
-function pinetree() {
-fill("green");
-stroke("brown");
-strokeWeight(5);
-triangle(150,40,80,160,230,160);
-triangle(70,250,150,100,240,240);
-triangle(70,320,150,200,240,340);
-line(150,320,150,430);
+function pineTree(x, y, b, h) {
+
+	//"x" and "y" are the coordinates for the top of the tree
+	//"b" is the base of the triangles
+	//"h" is the height of each triangle
+
+	let pineTreeColors = [
+		'#006400', // Dark Green
+		'#228B22', // Forest Green
+		'#8B4513', // Saddle Brown
+		'#556B2F', // Dark Olive Green
+		'#2E8B57' // Sea Green
+	];
+
+	fill(random(pineTreeColors));
+	stroke("black");
+
+	triangle(x, y + h, x - 0.5 * b, y + 2 * h, x + 0.5 * b, y + 2 * h);
+	triangle(x, y + 0.5 * h, x - 0.5 * b, y + 1.5 * h, x + 0.5 * b, y + 1.5 * h);
+	triangle(x, y, x - 0.5 * b, y + h, x + 0.5 * b, y + h);
+	line(x, y + 2 * h, x, y + 2.5 * h);
 }
 
 function moon() {
     noStroke();
     fill("gray");
     circle(80,80,120);
-}
-
-function snowfall() {
-
-  background(img);
-
-  if (frameCount % 3 === 0) {
-    let snowflake = {
-      x: random(width),
-      y: random(-10, -5),
-      d: random(5, 30),
-      speedX: random(-1, 1),
-      speedY: random(1, 3),
-    };
-    snowflakes.push(snowflake);
-  }
-
-  for (let flake of snowflakes) {
-		flake.x += flake.speedX;
-		flake.y += flake.speedY;
-
-    noStroke();
-    // fill(snowflakeColor);
-    fill("white");
-    circle(flake.x, flake.y, flake.d);
-  }
 }
 
 function snowman() {
